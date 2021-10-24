@@ -8,7 +8,6 @@ import TextContainer from '../components/TextContainer';
 
 export default function ChatBotScreen({ navigation, route }) {
     const [textInput, setTextInput] = useState('')
-    const [optionSelect, setOptionSelect] = useState('')
     const [texts, setTexts] = useState([])
     const [textsHTML, setTextsHTML] = useState(<View></View>)
 
@@ -45,9 +44,9 @@ export default function ChatBotScreen({ navigation, route }) {
             const newTexts = [{ text: textInput, sender: 'user', id: `textSendOn${new Date().toISOString()}` }]
             if (textInput === 'Uber') {
                 newTexts.push({ text: 'Enter your pick up location', sender: 'bot', id: `textSendOn${new Date().toISOString()}` })
-            } else if (textInput.includes('16 Turk Street')) {
+            } else if (textInput.includes('16 Turk')) {
                 newTexts.push({ text: 'Enter your destination', sender: 'bot', id: `textSendOn${new Date().toISOString()}` })
-            } else if (textInput === '1140 Market Street, San Francisco') {
+            } else if (textInput.includes('1140 Market')) {
                 const textsNew = [{ text: 'Choose a ride', sender: 'bot', id: `textSendOn${new Date().toISOString()}1` }, { text: '1. Uber X for US$30', sender: 'bot', id: `textSendOn${new Date().toISOString()}2` }, { text: '2. Uber XL for US$40', sender: 'bot', id: `textSendOn${new Date().toISOString()}3` }]
                 textsNew.map(text => {
                     newTexts.push(text)
@@ -98,20 +97,6 @@ export default function ChatBotScreen({ navigation, route }) {
                 {textsHTML}
             </View>
             <View style={styles.textboxContainer}>
-                {/* <View style={styles.options}>
-                    <CircleButton title='Uber' action = {() => {
-                        setTextInput('Uber')
-                        addText()
-                    }}/>
-                    <CircleButton title='Weather' action = {() => {
-                        setTextInput('Weather')
-                        addText()
-                    }}/>
-                    <CircleButton title='News' action = {() => {
-                        setTextInput('News')
-                        addText()
-                    }}/>
-                </View> */}
                 <View style={styles.textbox}>
                     <TextInputView onChange={setTextInput} margin={0} color='gray' focusColor='black' width='80%' />
                     <Button width='auto' backgroundColor='white' textColor='#4285f4' title='>' fontSize={50} action={addText} />

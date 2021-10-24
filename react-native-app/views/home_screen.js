@@ -2,6 +2,7 @@ import Button from '../components/Button'
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import TextInputView from '../components/TextInput';
+import TextView from '../components/Text';
 
 export default function HomeScreen({ navigation }) {
     const [loginInfoName, setLoginInfoName] = useState('')
@@ -33,7 +34,14 @@ export default function HomeScreen({ navigation }) {
                         <Image style={styles.logoImg} source={require('../assets/logo.png')} />
                     </View>
                     <View style={styles.input}>
-                        <Text style={styles.brandText}>Access</Text>
+                        <View style = {styles.title}>
+                            <TextView text="A" color='#4285f4' fontSize={30} />
+                            <TextView text="c" color='#ea4335' fontSize={30} />
+                            <TextView text="c" color='#fbbc05' fontSize={30} />
+                            <TextView text="e" color='#4285f4' fontSize={30} />
+                            <TextView text="s" color='#34a853' fontSize={30} />
+                            <TextView text="s" color='#ea4335' fontSize={30} />
+                        </View>
                         <TextInputView placeholder="Name" onChange={setLoginInfoName} />
                         <TextInputView placeholder="Phone Number" onChange={setLoginInfoPN} />
                     </View>
@@ -49,6 +57,9 @@ export default function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    title: {
+        flexDirection: 'row'
+    },
     container: {
         flex: 1,
         backgroundColor: '#fff',
